@@ -8,9 +8,9 @@ Explanation
 
 Run in react and vue at the same time.
 
-- [react on vue] (# ReactInVue)
+- [react on vue](# ReactInVue)
 
-- [vue at react] (# VueInReact)
+- [vue at react](# VueInReact)
 
 Two situations
 
@@ -97,17 +97,17 @@ export default {
 
 Which appeared
 
-- [install ()] (https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6)
+- [install ()](https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6)
 
-- [vue.config is an object that contains the global configuration of Vue. You can modify the following properties before starting the application:] (https://cn.vuejs.org/v2/api/#optionMergeStrategies)
+- [vue.config is an object that contains the global configuration of Vue. You can modify the following properties before starting the application:](https://cn.vuejs.org/v2/api/#optionMergeStrategies)
 
-- [Object.entries] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
+- [Object.entries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
 
 ```js
 const obj = {foo: 'bar', baz: 42};
 console.log (Object.entries (obj)); // [['foo', 'bar'], ['baz', 42]]
 ```
-- [Array.prototype.reduce] (https://developer.mozilla.org/wiki/Reduce)
+- [Array.prototype.reduce](https://developer.mozilla.org/wiki/Reduce)
 
 ```js
 var flattened = [[0, 1], [2, 3], [4, 5]]. reduce (function (a, b) {
@@ -236,13 +236,13 @@ module.exports = function ({types}) {
 
 ```
 
-- [babel-types] (https://github.com/babel/babel/tree/master/packages/babel-types)
+- [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types)
 
-- [babel-AST] (http://web.jobbole.com/88236/)
+- [babel-AST](http://web.jobbole.com/88236/)
 
-- [babel-syntax plug-in Chinese] (https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-api)
+- [babel-syntax plug-in Chinese](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-api)
 
-- [Online AST Syntax Tree] (http://astexplorer.net/)
+- [Online AST Syntax Tree](http://astexplorer.net/)
 
 This part of the need to understand the AST syntax tree, the above link can help you to be simple and clear `babel` `` plugins`` plug-in `` ImportSpecifier` ```` ```` ```` ```` ```` ```member problems?
 
