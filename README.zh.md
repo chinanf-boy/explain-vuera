@@ -242,7 +242,9 @@ module.exports = function ({ types }) {
 
 - [在线AST语法树](http://astexplorer.net/)
 
-总得来说，就是把 ``react.createElement`` 变成 ``__vueraReactResolver`` 内置函数
+这部分需要理解 AST语法树的 问题 , 上面的链接能帮助你简单明确 ``babel`` 的 ``plugins`` 插件中 ``ImportSpecifier`` ``MemberExpression`` 之类 问题
+
+>babel.js中总得来说，就是把 ``react.createElement`` 变成 ``__vueraReactResolver`` 内置函数
 
 ```js
 export function babelReactResolver (component, props, children) {
@@ -255,6 +257,8 @@ export function babelReactResolver (component, props, children) {
 ```
 
 上面的只是再 ``babel`` 将 ``js`` 降级时所作的事情
+
+---
 
 VueWrapper 上面代码中 👄最重要的
 
@@ -278,14 +282,15 @@ export default class VueContainer extends React.Component {
     super(props)
 
     /**
-     * We have to track the current Vue component so that we can reliably catch updates to the
+     * 传入并重新定义真正的 组件
      * `component` prop.
      */
     this.currentVueComponent = props.component
 
     /**
-     * Modify createVueInstance function to pass this binding correctly. Doing this in the
-     * constructor to avoid instantiating functions in render.
+     * 修改createVueInstance函数以正确传递此绑定。 在做这个
+     *       构造函数避免在渲染中实例化函数。
+     *  //我觉得有点难理解 ：译者曰
      */
     const createVueInstance = this.createVueInstance
     const self = this
@@ -301,7 +306,7 @@ export default class VueContainer extends React.Component {
       this.updateVueComponent(this.props.component, component)
     }
     /**
-     * NOTE: we're not comparing this.props and nextProps here, because I didn't want to write a
+     * NOTE: 没有去比较 props 和 nextprops, because I didn't want to write a
      * function for deep object comparison. I don't know if this hurts performance a lot, maybe
      * we do need to compare those objects.
      */
@@ -313,10 +318,10 @@ export default class VueContainer extends React.Component {
   }
 
   /**
-   * Creates and mounts the Vue instance.
-   * NOTE: since we need to access the current instance of VueContainer, as well as the Vue instance
-   * inside of the Vue constructor, we cannot bind this function to VueContainer, and we need to
-   * pass VueContainer's binding explicitly.
+   * 创建和加载 VueInstance 接口
+   * NOTE:  VueInstance inside VueContainer
+   * 我们不能绑定 createVueInstance 到 这个 VueContainer 对象, 需要明确
+   * 传递 绑定对象
    * @param {HTMLElement} targetElement - element to attact the Vue instance to
    * @param {ReactInstance} reactThisBinding - current instance of VueContainer
    */
@@ -362,4 +367,4 @@ export default class VueContainer extends React.Component {
 
 用 ``React.Component`` 包裹传入的 ``props.component`` 组件，然后内部新建 ``Vue实例 reactThisBinding.vueInstance``，
 
-- 相当于说 这部分 element 交给 Vue 处理
+- 相当于说 这部分 ``<div ref={this.createVueInstance} />`` 交给 Vue 处理, 然后把 Vue的部分事件 给予 react.component 组件事件处理调用。
