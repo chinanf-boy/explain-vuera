@@ -31,10 +31,10 @@ Now, use your React components like you will normally use your Vue components!
 ```vue
 <template>
   <div>
-    <h1> I'm a Vue component </ h1>
+    <h1> I'm a Vue component </h1>
     <my-react-component: message = "message" @ reset = "reset" />
-  </ div>
-</ template>
+  </div>
+</template>
 
 <script>
   import MyReactComponent from './MyReactComponent'
@@ -50,7 +50,7 @@ Now, use your React components like you will normally use your Vue components!
     },
     components: {'my-react-component': MyReactComponent},
   }
-</ script>
+</script>
 ```
 
 Use React as a Vue plugin
@@ -145,11 +145,11 @@ import MyVueComponent from './MyVueComponent.vue'
 
 export default () => (
   <div>
-    <h1> I'm a react component </ h1>
+    <h1> I'm a react component </h1>
     <div>
       <MyVueComponent message = 'Hello from Vue!' />
-    </ div>
-  </ div>
+    </div>
+  </div>
 )
 ```
 
@@ -275,7 +275,7 @@ const VUE_COMPONENT_NAME = 'vuera-internal-component-name'
 const wrapReactChildren = (createElement, children) =>
   createElement ('vuera-internal-react-wrapper', {
     props: {
-      component: () => <div> {children} </ div>,
+      component: () => <div> {children} </div>,
     },
   })
 
