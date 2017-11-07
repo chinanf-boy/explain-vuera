@@ -5,12 +5,13 @@
 Explanation
 > "version": "0.1.3"
 
+[中文版](./README.zh.md)
 
 Run in react and vue at the same time.
 
-- [react on vue](# ReactInVue)
+- [react on vue](#ReactInVue)
 
-- [vue at react](# VueInReact)
+- [vue at react](#VueInReact)
 
 Two situations
 
@@ -52,6 +53,8 @@ Now, use your React components like you will normally use your Vue components!
   }
 </script>
 ```
+
+---
 
 Use React as a Vue plugin
 
@@ -154,6 +157,8 @@ export default () => (
 ```
 
 From the way of adding `` .babelrc``, is it possible to use babel?
+
+---
 
 vuera/babel.js
 ```js
