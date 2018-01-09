@@ -5,13 +5,25 @@
 Explanation
 > "version": "0.1.3"
 
+[github source](https://github.com/topics/vuera)
+
 [中文版](./README.zh.md)
+
+---
 
 Run in react and vue at the same time.
 
 - [react on vue](#ReactInVue)
 
 - [vue at react](#VueInReact)
+
+---
+
+- see more
+
+  - [isReactComponent](#isreactcomponent)
+
+---
 
 Two situations
 
@@ -249,7 +261,7 @@ module.exports = function ({types}) {
 
 - [Online AST Syntax Tree](http://astexplorer.net/)
 
-This part of the need to understand the AST syntax tree, the above link can help you to be simple and clear `babel` `` plugins`` plug-in `` ImportSpecifier` ```` ```` ```` ```` ```` ```member problems?
+This part of the need to understand the AST syntax tree, the above link can help you to be simple and clear `babel` `` plugins`` plug-in ` ImportSpecifier`member problems?
 
 > babel.js in general, is to turn `` react.createElement`` into a `__vueraReactResolver`` built-in function
 
@@ -375,3 +387,26 @@ export default class VueContainer extends React.Component {
 The `` props.component`` component is wrapped with `` React.Component``, and then the `` Vue instance reactThisBinding.vueInstance`` is created internally.
 
 - Equivalent to say that this part of the `` <div ref = {this.createVueInstance} /> `` to the Vue processing, and then part of Vue react.component component event handler call.
+
+---
+
+## see more
+
+### isReactComponent
+
+``` js
+export default function isReactComponent (component) {
+  if (typeof component === 'object') {
+    return false // no object == no react
+  } else if (
+    typeof component === 'function' &&
+    component.prototype.constructor.super &&
+    component.prototype.constructor.super.name.startsWith('Vue')
+  ) {
+    return false // is vue
+  } else {
+    return true // is react
+  }
+}
+
+```

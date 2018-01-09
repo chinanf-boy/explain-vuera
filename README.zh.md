@@ -2,15 +2,27 @@
 
 [![explain](http://llever.com/explain.svg)](https://github.com/chinanf-boy/Source-Explain)
 
-解释   
+解释 
+
 >"version": "0.1.3"
 
+[github source](https://github.com/topics/vuera)
+
+---
 
 同时在 react 与 vue 中 运行。
 
 - [react 在 vue](#ReactInVue)
 
 - [vue 在 react](#VueInReact)
+
+---
+
+- 其他
+
+  - [isReactComponent 函数 实现](#isreactcomponent)
+
+---
 
 两种情况
 
@@ -370,3 +382,26 @@ export default class VueContainer extends React.Component {
 用 ``React.Component`` 包裹传入的 ``props.component`` 组件，然后内部新建 ``Vue实例 reactThisBinding.vueInstance``，
 
 - 相当于说 这部分 ``<div ref={this.createVueInstance} />`` 交给 Vue 处理, 然后把 Vue的部分事件 给予 react.component 组件事件处理调用。
+
+---
+
+## 其他
+
+### isReactComponent
+
+``` js
+export default function isReactComponent (component) {
+  if (typeof component === 'object') {
+    return false // no object == no react
+  } else if (
+    typeof component === 'function' &&
+    component.prototype.constructor.super &&
+    component.prototype.constructor.super.name.startsWith('Vue')
+  ) {
+    return false // is vue
+  } else {
+    return true // is react
+  }
+}
+
+```
