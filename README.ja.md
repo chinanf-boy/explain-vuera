@@ -1,37 +1,36 @@
-# vuera
+# ヴェラ
 
 [![explain](http://llever.com/explain.svg)](https://github.com/chinanf-boy/Source-Explain)
 
-Explanation
-> "version": "0.1.3"
+説明
 
-[github source](https://github.com/topics/vuera)
+> "version":  "0.1.3"
+
+[ギブスソース](https://github.com/topics/vuera)
 
 [中文版](./README.zh.md)
 
-[日文版](./README.ja.md)
+* * *
 
----
+反応して同時に動いている. 
 
-Run in react and vue at the same time.
+-   [vueに反応する](#ReactInVue)
 
-- [react on vue](#ReactInVue)
+-   [反応時の意見](#VueInReact)
 
-- [vue at react](#VueInReact)
+* * *
 
----
+-   続きを見る
 
-- see more
+    -   [isreactcomponent](#isreactcomponent)
 
-  - [isReactComponent](#isreactcomponent)
+* * *
 
----
+2つの状況
 
-Two situations
+最初に言った: 
 
-First said first:
-
-# ReactInVue
+# 反応する
 
 ```js
 import Vue from 'vue'
@@ -41,7 +40,7 @@ Vue.use (VuePlugin)
 /* ... */
 ```
 
-Now, use your React components like you will normally use your Vue components!
+通常はあなたのvueコンポーネントを使用するようにㄡあなたの反応コンポーネントを使用してください!
 
 ```vue
 <template>
@@ -68,11 +67,12 @@ Now, use your React components like you will normally use your Vue components!
 </script>
 ```
 
----
+* * *
 
-Use React as a Vue plugin
+vueプラグインとして反応する
 
-vuera/src/VuePlugin.js
+vuera / src / vueplugin.js
+
 ```js
 // Determine if React's component
 import isReactComponent from './utils/isReactComponent'
@@ -109,22 +109,22 @@ export default {
     }
   },
 }
-
 ```
 
-Which appeared
+登場した
 
-- [install ()](https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6)
+-   [install()](https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6)
 
-- [vue.config is an object that contains the global configuration of Vue. You can modify the following properties before starting the application:](https://cn.vuejs.org/v2/api/#optionMergeStrategies)
+-   [vue.configはㄡvueのグローバルコンフィグレーションを含むオブジェクトです. ](https://cn.vuejs.org/v2/api/#optionMergeStrategies)
 
-- [Object.entries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
+-   [アプリケーションを起動する前に以下のプロパティを変更することができます: ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
 
 ```js
 const obj = {foo: 'bar', baz: 42};
 console.log (Object.entries (obj)); // [['foo', 'bar'], ['baz', 42]]
 ```
-- [Array.prototype.reduce](https://developer.mozilla.org/wiki/Reduce)
+
+-   [object.entries](https://developer.mozilla.org/wiki/Reduce)
 
 ```js
 var flattened = [[0, 1], [2, 3], [4, 5]]. reduce (function (a, b) {
@@ -133,20 +133,22 @@ var flattened = [[0, 1], [2, 3], [4, 5]]. reduce (function (a, b) {
 // flattened is [0, 1, 2, 3, 4, 5]
 ```
 
-- VueResolver
+-   array.prototype.reduce
 
-vuera/src/resolvers/Vue.js
-> React Component -> Vue Component
+vueresolver
 
-So you can see that the use of traversing the side of the `` Vue`` component, if found, `` React`` component looks like it is transformed into `` Vue``.
+> vuera / src / resolvers / vue.js
 
-Say the second:
+反応コンポーネント→vueコンポーネント`あなたはㄡあなたの側を横切ることの使用が`ビュー`コンポーネントが見つかった場合ㄡ`反応する`コンポーネントが変わったように見える`ビュー
 
-# VueInReact
+. 
 
-Add `vuera/babel` to your` .babelrc` `plugins` option
+# 第二に言う: 
 
-.babelrc
+vueinreact`追加する`ヴェラ/ベルベル`あなたの` `.babelrc`プラグイン
+
+オプション
+
 ```json
 {
   "presets": "react",
@@ -154,7 +156,7 @@ Add `vuera/babel` to your` .babelrc` `plugins` option
 }
 ```
 
-use
+.babelrc
 
 ```jsx
 import React from 'react'
@@ -170,11 +172,12 @@ export default () => (
 )
 ```
 
-From the way of adding `` .babelrc``, is it possible to use babel?
+つかいます`追加の方法から`.babelrc
 
----
+* * *
 
-vuera/babel.js
+ㄡそれはバベルを使用することは可能ですか?
+
 ```js
 /* eslint-env node */
 
@@ -252,20 +255,19 @@ module.exports = function ({types}) {
     },
   }
 }
-
 ```
 
-- [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types)
+-   [vuera / babel.js](https://github.com/babel/babel/tree/master/packages/babel-types)
 
-- [babel-AST](http://web.jobbole.com/88236/)
+-   [バベルタイプ](http://web.jobbole.com/88236/)
 
-- [babel-syntax plug-in Chinese](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-api)
+-   [バベル](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-api)
 
-- [Online AST Syntax Tree](http://astexplorer.net/)
+-   [バーベル構文プラグイン中国語](http://astexplorer.net/)
 
-This part of the need to understand the AST syntax tree, the above link can help you to be simple and clear `babel` `` plugins`` plug-in ` ImportSpecifier`member problems?
+オンラインast構文ツリー`上記のリンクはあなたがシンプルで明確になるのを助けることができます` `バベル`プラグイン`プラグイン`importspecifier
 
-> babel.js in general, is to turn `` react.createElement`` into a `__vueraReactResolver`` built-in function
+> メンバーの問題?`一般的にbabel.jsはㄡ`react.createelement``\`\_\_vuerareactresolver
 
 ```js
 export function babelReactResolver (component, props, children) {
@@ -277,13 +279,14 @@ export function babelReactResolver (component, props, children) {
 // babelReactResolver as __vueraReactResolver
 ```
 
-The above is only the last thing babel does to downgrade js
+組み込み関数
 
----
+* * *
 
-VueWrapper The above code is the most important
+上記はバベルがjsをダウングレードするために行う最後のものです
 
-vuera/src/wrapper/vue.js
+vuewrapper上記のコードが最も重要です
+
 ```js
 import React from 'react'
 import Vue from 'vue'
@@ -386,17 +389,17 @@ export default class VueContainer extends React.Component {
 }
 ```
 
-The `` props.component`` component is wrapped with `` React.Component``, and then the `` Vue instance reactThisBinding.vueInstance`` is created internally.
+vuera / src / wrapper / vue.js`その`props.component`コンポーネントが`react.component`ㄡ次に`vue instance reactthisbinding.vueinstance
 
-- Equivalent to say that this part of the `` <div ref = {this.createVueInstance} /> `` to the Vue processing, and then part of Vue react.component component event handler call.
+-   内部で作成されます. `これと同じことはㄡ`&lt;div ref = {this.createvueinstance} />
 
----
+* * *
 
-## see more
+## vue react.componentコンポーネントのイベントハンドラ呼び出しの一部に渡します. 
 
-### isReactComponent
+### 続きを見るisreactcomponent
 
-``` js
+```js
 export default function isReactComponent (component) {
   if (typeof component === 'object') {
     return false // no object == no react
@@ -410,5 +413,4 @@ export default function isReactComponent (component) {
     return true // is react
   }
 }
-
 ```
